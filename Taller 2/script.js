@@ -5,11 +5,8 @@ function addNew(autor, contenido, fecha) {
     var c = $("<p/>",{
       html: contenido
     });
-    var f=$("<time/>",{
+    var f=$("<p/>",{
     html:fecha  
-    });
-    var tweetContent = $("<div/>", {
-      "class": "col-11"
     });
 
     var au= $("<div/>", {
@@ -23,16 +20,15 @@ function addNew(autor, contenido, fecha) {
     var fe = $("<div/>", {
       "class": "row"
     });
-      var div = $( "<div/>", {
+    var div = $( "<div/>", {
         "class": "row card-body"
-      })
+    });
     a.appendTo(au);
     c.appendTo(conten);
     f.appendTo(fe);
-    au.appendTo(tweetContent);
-    conten.appendTo(tweetContent);
-    fe.appendTo(tweetContent);
-    tweetContent.appendTo(div);
+    au.appendTo(div);
+    conten.appendTo(div);
+    fe.appendTo(div);
     div.appendTo("#noticias");
 
 }
@@ -40,7 +36,7 @@ function addNew(autor, contenido, fecha) {
 function loadTweets() {
   $.ajax({
       type: "GET",
-      url: "twitrss.me/twitter_search_to_rss/?term=#futbol",
+      url: "https://twitrss.me/twitter_user_to_rss/?user=suert_o_tripa",
       dataType: "xml",
       success: function(xml){
           $(xml).find('item').each(function(){
